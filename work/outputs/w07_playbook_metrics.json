@@ -1,0 +1,12 @@
+{
+  "reference_month": "2026-03",
+  "total_pages": 63856,
+  "clusters": 4,
+  "validation_silhouette": 0.465995,
+  "cluster_counts": {
+    "0": 37657,
+    "1": 23802,
+    "2": 1158,
+    "3": 1239
+  }
+}

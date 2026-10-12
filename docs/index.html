@@ -248,6 +248,7 @@
   </p>
 
   <div class="metric-grid">
+
     <div class="metric">
       <span class="metric-value">63,856</span>
       <span class="metric-label">Content observations</span>
@@ -267,41 +268,47 @@
       <span class="metric-value">0.466</span>
       <span class="metric-label">Validation silhouette</span>
     </div>
+
   </div>
 
 
   <h2>Abstract</h2>
 
   <p>
-    This study investigates whether unsupervised clustering can identify meaningful
-    content-performance archetypes from search visibility and engagement signals.
-    March 2026 content-performance data were aggregated into 63,856 content observations
-    across 34 pseudonymized clients using impressions, CTR, sessions, and engagement rate.
-    K-Means clustering was applied after log transformation and feature standardization,
-    with cluster quality evaluated using the silhouette score and client-grouped validation.
-    Four clusters were identified, achieving a validation silhouette score of approximately
-    0.466 on unseen clients and producing substantially more coherent geometric groups than
-    baseline-derived priority bands.
-    The resulting clusters are intended as descriptive decision-support patterns that help
-    users identify which groups of content should be prioritized for human review.
+    FlyRank manages large volumes of published content and needs a practical way to identify
+    which groups of content deserve review first. This study investigates whether unsupervised
+    clustering can identify meaningful content-performance archetypes from search visibility
+    and engagement signals. March 2026 content-performance data were aggregated into 63,856
+    content observations across 34 pseudonymized clients using impressions, CTR, sessions,
+    and engagement rate. K-Means clustering was applied after log transformation and feature
+    standardization, with cluster quality evaluated using the silhouette score and client-grouped
+    validation. Four clusters were identified, achieving a validation silhouette score of
+    approximately 0.466 on unseen clients and providing descriptive groups that can support
+    FlyRank's human content-review prioritization workflow.
   </p>
 
 
   <h2>1. Introduction</h2>
 
   <p>
-    The research question addressed in this study is whether unsupervised clustering can
-    identify meaningful content-performance archetypes from search visibility and engagement
-    signals, and whether those archetypes can support a useful content-review prioritization
-    workflow compared with a manually defined rule-based baseline.
+    FlyRank tracks the performance of large numbers of content items using search visibility
+    and engagement signals. A practical challenge is deciding which content should be reviewed
+    first, because high visibility does not always translate into strong click response or
+    engagement.
   </p>
 
   <p>
-    The study groups content using impressions, CTR, sessions, and engagement rate.
-    The K-Means approach is compared with a rule-based baseline that ranks content using
-    manually weighted visibility, low CTR, and low engagement signals.
-    The objective is not to predict a target label, but to identify recurring performance
-    patterns that can support human review decisions.
+    The research question addressed in this study is whether unsupervised clustering can
+    identify meaningful content-performance archetypes from impressions, CTR, sessions,
+    and engagement rate, and whether those archetypes can support FlyRank's content-review
+    prioritization process compared with a manually defined rule-based baseline.
+  </p>
+
+  <p>
+    The objective is not to predict a target label or automatically change content. Instead,
+    the model is intended to identify recurring performance patterns that help human reviewers
+    distinguish between content that may need attention, content that should be monitored,
+    and content where more evidence should be collected before action is taken.
   </p>
 
 
@@ -487,6 +494,7 @@
 
   <div class="figure">
     <img src="assets/silhouette.png" alt="Silhouette scores">
+
     <div class="caption">
       Figure 1. Silhouette score across candidate cluster configurations.
     </div>
@@ -503,6 +511,7 @@
 
   <div class="figure">
     <img src="assets/cluster_profiles.png" alt="Cluster profiles">
+
     <div class="caption">
       Figure 2. Median performance characteristics of the four clusters.
     </div>
@@ -526,6 +535,7 @@
 
   <div class="figure">
     <img src="assets/train_validation.png" alt="Training and validation silhouette scores">
+
     <div class="caption">
       Figure 3. Training and validation silhouette performance.
     </div>
@@ -542,6 +552,7 @@
 
   <div class="figure">
     <img src="assets/validation_split.png" alt="Random and grouped validation comparison">
+
     <div class="caption">
       Figure 4. Random split versus client-grouped validation.
     </div>
@@ -560,6 +571,7 @@
 
   <div class="figure">
     <img src="assets/baseline_comparison.png" alt="Baseline versus K-Means">
+
     <div class="caption">
       Figure 5. Comparison between baseline-derived groups and K-Means.
     </div>
@@ -578,6 +590,7 @@
 
   <div class="figure">
     <img src="assets/error_analysis.png" alt="Unusual validation observations">
+
     <div class="caption">
       Figure 6. Validation observations with the greatest distance from their assigned centroid.
     </div>
@@ -693,7 +706,9 @@
 
   <p>
     Learn more about
-    <a href="https://flyrank.ai" target="_blank">FlyRank</a>.
+    <a href="https://flyrank.ai" target="_blank">
+      FlyRank
+    </a>.
   </p>
 
 

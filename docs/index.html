@@ -7,80 +7,202 @@
   <title>Content Performance Archetypes Using K-Means Clustering</title>
 
   <style>
+    :root {
+      --bg: #0a2426;
+      --surface: #102e2f;
+      --surface-2: #16393a;
+      --accent: #6cdd9b;
+      --text: #f1f1f1;
+      --muted: #9fb8b2;
+      --border: #214647;
+      --warning: #f9c74f;
+      --danger: #f97066;
+      --blue: #8ab4f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+
       line-height: 1.7;
-      max-width: 900px;
+      max-width: 960px;
       margin: auto;
-      padding: 40px 20px;
-      color: #222;
-      background: #ffffff;
+      padding: 50px 24px;
+
+      color: var(--text);
+      background: var(--bg);
     }
 
     h1 {
-      font-size: 2.4rem;
-      line-height: 1.2;
-      margin-bottom: 10px;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+      color: #ffffff;
     }
 
     h2 {
-      margin-top: 50px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #ddd;
+      margin-top: 65px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      color: #ffffff;
     }
 
     h3 {
-      margin-top: 30px;
+      margin-top: 32px;
+      color: var(--accent);
     }
 
     p {
-      margin: 14px 0;
+      margin: 15px 0;
     }
 
     .subtitle {
-      color: #555;
-      margin-bottom: 35px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 45px;
+    }
+
+    .formula {
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+
+      text-align: center;
+
+      margin: 22px 0;
+      padding: 16px 20px;
+
+      font-family: "Times New Roman", serif;
+      font-size: 1.15rem;
     }
 
     .figure {
-      margin: 30px 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      margin: 32px 0;
+      padding: 18px;
+
       text-align: center;
     }
 
     .figure img {
+      display: block;
       max-width: 100%;
       height: auto;
-      border: 1px solid #ddd;
-      border-radius: 6px;
+      margin: auto;
+
+      border-radius: 8px;
+      background: white;
     }
 
     .caption {
+      margin-top: 12px;
+      color: var(--muted);
       font-size: 0.9rem;
-      color: #666;
-      margin-top: 8px;
-    }
-
-    .formula {
-      text-align: center;
-      margin: 20px 0;
-      font-family: "Times New Roman", serif;
-      font-size: 1.1rem;
     }
 
     .recommendation {
-      margin-bottom: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 18px 0;
     }
 
-    footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-      font-size: 0.9rem;
-      color: #666;
+    .recommendation h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 30px 0 45px;
+    }
+
+    .metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .metric-value {
+      display: block;
+      color: var(--accent);
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .metric-label {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.85rem;
     }
 
     a {
-      color: #0969da;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 70px;
+      padding-top: 22px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 32px 18px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        margin-top: 48px;
+      }
+
+      .figure {
+        padding: 10px;
+      }
+
+      .formula {
+        overflow-x: auto;
+        font-size: 1rem;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
@@ -92,6 +214,28 @@
   <p class="subtitle">
     A data-driven approach to supporting content review prioritization using search visibility and engagement signals.
   </p>
+
+  <div class="metric-grid">
+    <div class="metric">
+      <span class="metric-value">63,856</span>
+      <span class="metric-label">Content observations</span>
+    </div>
+
+    <div class="metric">
+      <span class="metric-value">34</span>
+      <span class="metric-label">Pseudonymized clients</span>
+    </div>
+
+    <div class="metric">
+      <span class="metric-value">4</span>
+      <span class="metric-label">Final clusters</span>
+    </div>
+
+    <div class="metric">
+      <span class="metric-value">0.466</span>
+      <span class="metric-label">Validation silhouette</span>
+    </div>
+  </div>
 
 
   <h2>Abstract</h2>
@@ -440,36 +584,44 @@
   <h2>6. Ranked Recommendations</h2>
 
   <div class="recommendation">
-    <h3>1. High Visibility, Weak Response</h3>
+    <h3>Cluster 1: High Priority — High Visibility, Weak Response</h3>
+
     <p>
-      This cluster receives the highest review priority because the content already receives
-      substantial visibility but produces relatively weak response. The recommended action is
-      to review the content and search snippet.
+      Cluster 1 receives the highest review priority because it contains content with
+      substantially higher visibility but relatively weak CTR and engagement. The recommended
+      action is to review the content and search snippet.
     </p>
   </div>
 
+
   <div class="recommendation">
-    <h3>2. Low Visibility, Weak Response</h3>
+    <h3>Cluster 0: Second Priority — Low Visibility, Weak Response</h3>
+
     <p>
-      These pages receive second priority and should be reviewed when they are strategically
-      important to the business or content strategy.
+      Cluster 0 contains content with low visibility and weak response. These pages should
+      be reviewed when they are strategically important to the business or content strategy.
     </p>
   </div>
 
+
   <div class="recommendation">
-    <h3>3. Engaged, Lower Volume</h3>
+    <h3>Cluster 3: Third Priority — Engaged, Lower Volume</h3>
+
     <p>
-      These pages show comparatively strong engagement despite lower traffic volume.
-      The recommended action is to protect and monitor their performance.
+      Cluster 3 contains lower-volume content with comparatively strong engagement.
+      The recommended action is to protect and monitor its performance rather than
+      immediately modify it.
     </p>
   </div>
 
+
   <div class="recommendation">
-    <h3>4. Insufficient Volume, Extreme Rates</h3>
+    <h3>Cluster 2: Lowest Priority — Insufficient Volume, Extreme CTR</h3>
+
     <p>
-      These pages receive the lowest immediate action priority because their performance rates
-      are often based on very small amounts of data. Additional observations should be collected
-      before making content decisions.
+      Cluster 2 contains very low-volume content with extreme CTR values. Because these
+      rates are based on limited observations, additional data should be collected before
+      making content decisions.
     </p>
   </div>
 
